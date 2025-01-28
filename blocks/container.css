@@ -1,0 +1,20 @@
+.container {
+  max-width: 880px;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+}
+
+@media screen and (max-width: 768px) {
+  /* For screens smaller than 768px */
+  .container {
+    width: calc(100% - 100px);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  /* For screens smaller than 480px */
+  .container {
+    width: calc(100% - 20px);
+  }
+}
