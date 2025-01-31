@@ -1,21 +1,15 @@
-# Project 3: Around The U.S.
+# Around the U.S.
 
-### Overview  
+## A gallery Website – A Modern Visual Showcase
 
-* Intro  
-* Figma  
-* Images  
-  
-**Intro**
-  
-This project is made so all the elements are displayed correctly on popular screen sizes. We recommend investing more time in completing this project, since it's more difficult than previous ones.  
-  
-**Figma**  
-  
-* [Link to the project on Figma](https://www.figma.com/file/ii4xxsJ0ghevUOcssTlHZv/Sprint-3%3A-Around-the-US?node-id=0%3A1)  
-  
-**Images**  
-  
-The way you'll do this at work is by exporting images directly from Figma — we recommend doing that to practice more. Don't forget to optimize them [here](https://tinypng.com/), so your project loads faster. 
-  
-Good luck and have fun!
+Welcome to my Gallery Website, a visually stunning platform designed with advanced HTML and CSS. This project showcases a sleek and responsive design, ensuring a seamless browsing experience across all devices.
+
+The gallery features a modern layout, and an intuitive user interface, making it perfect for displaying images in an elegant and immersive way. While the website currently focuses on design, I am working on adding functionality to enhance user interaction, such as filtering, zooming, and dynamic content updates.
+
+Stay tuned for more updates as I continue improving and transforming this gallery into a fully interactive experience! 🚀
+
+[Around the U.S Github Repository](https://github.com/habibAbdelgaber/se_project_aroundtheus)
+
+[View the gallery](https://habibabdelgaber.github.io/se_project_aroundtheus/)
+
+[Around the U.S](https://vimeo.com/1052391061/27c08d2eae)

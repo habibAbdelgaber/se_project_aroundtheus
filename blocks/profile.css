@@ -20,7 +20,7 @@
     "title button"
     "description description";
 
-  grid-gap: 16px;
+  grid-gap: 7px 16px;
 }
 
 .profile__title {
@@ -42,6 +42,11 @@
   padding: 0;
   grid-area: button;
   margin: auto 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.profile__edit-button:hover {
+  opacity: 0.6;
 }
 
 .profile__description {
@@ -65,6 +70,11 @@
   height: 50px;
   border: 2px solid #ffffff;
   margin-left: auto;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.profile__add-button:hover {
+  opacity: 0.6;
 }
 
 @media screen and (max-width: 768px) {

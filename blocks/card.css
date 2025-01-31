@@ -17,7 +17,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px 25px;
+  padding: 25px 20px;
 }
 
 .card__title {
@@ -36,6 +36,7 @@
 .card__button-favorite {
   background: transparent url("../images/favorite.svg") center no-repeat;
   object-fit: cover;
+  background-size: cover;
   width: 21px;
   height: 18px;
   border: 0;
