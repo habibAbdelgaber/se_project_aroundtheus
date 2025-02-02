@@ -1,3 +1,18 @@
+.cards {
+  margin-top: 51px;
+}
+
+.cards__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 282px);
+  justify-content: center;
+  grid-gap: 20px 17px;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  border-radius: 10px;
+}
+
 .card {
   border-radius: 10px;
   margin: 0;
@@ -33,12 +48,25 @@
   max-width: 219px;
 }
 
-.card__button-favorite {
+.card__like-button {
   background: transparent url("../images/favorite.svg") center no-repeat;
   object-fit: cover;
   background-size: cover;
+  opacity: 1;
   width: 21px;
   height: 18px;
   border: 0;
   padding: 0;
+  cursor: pointer;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.card__like-button:hover {
+  opacity: 0.5;
+}
+
+@media screen and (max-width: 768px) {
+  .gallery {
+    margin-top: 36px;
+  }
 }

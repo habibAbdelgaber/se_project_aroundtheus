@@ -1,15 +1,12 @@
 .header {
   margin-top: 45px;
+  border-bottom: 1px #545454 solid;
 }
 
 .header__logo {
   width: 173px;
   height: 33px;
   margin-bottom: 41px;
-}
-
-.header__divider {
-  border: 1px #545454 solid;
 }
 
 @media screen and (max-width: 320px) {
