@@ -10,6 +10,6 @@ Stay tuned for more updates as I continue improving and transforming this galler
 
 [Around the U.S Github Repository](https://github.com/habibAbdelgaber/se_project_aroundtheus)
 
-[View the gallery](https://habibabdelgaber.github.io/se_project_aroundtheus/)
+[View the gallery](https://gallery.pymastery.com/)
 
 [Around the U.S](https://vimeo.com/1052391061/27c08d2eae)

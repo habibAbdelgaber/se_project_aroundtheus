@@ -1,0 +1,51 @@
+.card {
+  border-radius: 10px;
+  margin: 0;
+  overflow: hidden;
+}
+
+.card__image {
+  display: block;
+  width: 282px;
+  height: 282px;
+  margin: 0;
+  object-fit: cover;
+}
+
+.card__description {
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 25px 20px; /* You asked me to correct the Padding value, but it seems that there is no different of padding value in mobile screens according to the figma design */
+}
+
+.card__title {
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  color: #000;
+  margin: 0;
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 2.4;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 219px;
+}
+
+.card__like-button {
+  background: transparent url("../images/favorite.svg") center no-repeat;
+  object-fit: cover;
+  background-size: cover;
+  opacity: 1;
+  width: 21px;
+  height: 18px;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.card__like-button:hover {
+  opacity: 0.5;
+}
