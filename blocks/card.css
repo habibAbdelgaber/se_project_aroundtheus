@@ -12,7 +12,7 @@
   object-fit: cover;
 }
 
-.card__description {
+.card__item {
   background-color: #fff;
   display: flex;
   align-items: center;
@@ -26,7 +26,7 @@
   margin: 0;
   font-size: 24px;
   font-weight: 900;
-  line-height: 2.4;
+  line-height: 29px;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
@@ -48,4 +48,11 @@
 
 .card__like-button:hover {
   opacity: 0.5;
+}
+
+@media screen and (max-width: 768px) {
+  /* For screens smaller than 768px */
+  .card__item {
+    /* padding: 15px 10px; */
+  }
 }
