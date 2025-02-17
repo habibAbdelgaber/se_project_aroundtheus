@@ -38,12 +38,44 @@
             </div>
             <button class="profile__add-button"></button>
           </section>
-          <!-- End of Profile -->
           <!-- Gallery section -->
           <section class="cards">
             <ul class="cards__list"></ul>
           </section>
           <!-- End of cards -->
+          <!-- Edit profile model -->
+          <section class="modal modal_opened">
+            <div class="modal__container">
+              <button class="modal__close"></button>
+              <form class="form">
+                <h2 class="form__title">Edit profile</h2>
+                <div class="form__input-group">
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    required
+                    placeholder="Name"
+                    class="form__input"
+                  />
+                  <div class="form__input-line"></div>
+                </div>
+                <div class="form__input-group">
+                  <input
+                    type="text"
+                    id="description"
+                    name="description"
+                    required
+                    placeholder="Description"
+                    class="form__input"
+                  />
+                  <div class="form__input-line"></div>
+                </div>
+                <button type="submit" class="form__submit">Save</button>
+              </form>
+            </div>
+          </section>
+          <!-- End of edit profile -->
         </main>
       </div>
       <!-- End of Container -->

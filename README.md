@@ -8,7 +8,15 @@ The gallery features a modern layout, and an intuitive user interface, making it
 
 Stay tuned for more updates as I continue improving and transforming this gallery into a fully interactive experience! 🚀
 
+### Technologies:
+
+- HTML
+- CSS
+- JavaScript
+
 [Around the U.S Github Repository](https://github.com/habibAbdelgaber/se_project_aroundtheus)
+
+[Github Pages](https://github.com/habibAbdelgaber/se_project_aroundtheus/settings/pages)
 
 [View the gallery](https://gallery.pymastery.com/)
 
