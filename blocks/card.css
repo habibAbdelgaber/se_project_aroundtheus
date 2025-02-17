@@ -12,7 +12,7 @@
   object-fit: cover;
 }
 
-.card__item {
+.card__footer {
   background-color: #fff;
   display: flex;
   align-items: center;

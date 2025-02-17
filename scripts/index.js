@@ -34,7 +34,7 @@ for (let card of initialCards) {
 
   cardElement.innerHTML = `
     <img src="${card.link}" alt="${card.name}" class="card__image" />
-    <div class="card__item">
+    <div class="card__footer">
       <h3 class="card__title">${card.name}</h3>
       <button class="card__like-button"></button>
     </div>
