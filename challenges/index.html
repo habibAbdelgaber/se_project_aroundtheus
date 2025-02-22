@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Javascript - Challenges</title>
+  </head>
+  <body>
+    <div class="books">
+      <div class="fantasy">
+        <div class="item">Harry Potter</div>
+        <div class="item">The Lord of the Rings</div>
+      </div>
+      <div class="adventure">
+        <div class="item">The Three Musketeers</div>
+      </div>
+    </div>
+
+    <div class="movies">
+      <div class="fantasy">
+        <div class="item">The Chronicles of Narnia</div>
+      </div>
+      <div class="adventure">
+        <div class="item">Indiana Jones</div>
+        <div class="item">Tomb Raider</div>
+      </div>
+    </div>
+    <div class="foo">
+      <div class="bar">
+        <div class="baz">Click me!</div>
+      </div>
+    </div>
+
+    <script>
+      const el = document.querySelector(".bar");
+
+      el.addEventListener("click", function printMessage(event) {
+        console.log(event.target.classList[0]);
+      });
+    </script>
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -42,3 +42,18 @@ for (let card of initialCards) {
 
   cardList.appendChild(cardElement);
 }
+
+// Add event listener to open and close modal buttons
+
+// Modal Functionality
+const modal = document.querySelector(".modal");
+const profileEditButton = document.querySelector(".content__edit-button");
+const closeModalButton = document.querySelector(".modal__close");
+
+profileEditButton.addEventListener("click", () => {
+  modal.style.display = "block";
+});
+
+closeModalButton.addEventListener("click", () => {
+  modal.style.display = "none";
+});
