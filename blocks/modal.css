@@ -50,11 +50,12 @@
   opacity: 0.6;
 }
 
-@media screen and (max-width: 768px) {
-  /* For screens smaller than 768px */
+@media screen and (max-width: 320px) {
+  /* For small screen of 320px */
   .modal__container {
     width: 282px;
-    margin: 0 19px;
+    margin: 146px 19px 0;
+    padding: 25px 22px;
   }
   .modal__close {
     width: 26px;

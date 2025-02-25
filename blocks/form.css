@@ -2,19 +2,22 @@
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 29px;
 }
 .form__title {
   font-family: "Inter", Arial, sans-serif;
   font-weight: 900;
   font-size: 24px;
   line-height: 29px;
-  margin: 0;
+  margin: 0 0 54px;
   color: #000;
 }
 
 .form__input-group {
   width: 100%;
+}
+
+.form__input-group:first-of-type {
+  margin-bottom: 29px;
 }
 
 .form__input {
@@ -41,7 +44,7 @@
 }
 
 .form__submit {
-  margin: 0;
+  margin: 48px 0 0;
   font-family: "Inter", Arial, sans-serif;
   font-weight: 400;
   width: 100%;
@@ -58,4 +61,23 @@
 
 .form__submit:hover {
   background-color: rgba(0, 0, 0, 0.8);
+}
+
+@media screen and (max-width: 320px) {
+  /* For small screen of 320px */
+  .form__input-group:first-of-type {
+    margin-bottom: 30px;
+  }
+  .form__title {
+    font-size: 18px;
+    line-height: 21px;
+    margin-bottom: 75px;
+  }
+
+  .form__submit {
+    padding: 14px;
+    font-size: 14px;
+    line-height: 16px;
+    margin-top: 45px;
+  }
 }
