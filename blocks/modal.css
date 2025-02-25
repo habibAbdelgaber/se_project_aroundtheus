@@ -2,28 +2,35 @@
 .modal {
   display: none;
   position: fixed;
-  top: 0;
+  z-index: 10;
   left: 0;
+  top: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.open-modal {
+  display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .modal__container {
-  margin: 0;
+  width: 430px;
+  background-color: #fff;
+  padding: 34px 36px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.5);
   position: relative;
-  width: 100%;
-  height: 100%;
 }
 
 .modal__close {
+  position: absolute;
+  top: -45px;
+  right: -40px;
   padding: 0;
   margin: 0;
-  top: 25%;
-  left: 70%;
-  position: absolute;
   width: 40px;
   height: 40px;
   background-color: transparent;
@@ -46,6 +53,7 @@
 @media screen and (max-width: 768px) {
   /* For screens smaller than 768px */
   .modal__container {
+    width: 282px;
     margin: 0 19px;
   }
   .modal__close {
