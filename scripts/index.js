@@ -63,7 +63,7 @@ const closeModalButton = document.querySelector(".modal__close");
 
 function toggleModal() {
   // Toggling modal on and off
-  modal.classList.toggle("open-modal");
+  modal.classList.toggle("modal_opened");
 }
 
 // Add event listener to open the modal
@@ -79,8 +79,8 @@ const profileContentDescription = document.querySelector(
 const formInputName = document.querySelector(".form__input-name");
 const formInputDescription = document.querySelector(".form__input-description");
 
-// Form element
-const formElement = document.querySelector(".form");
+// Profile form
+const profileForm = document.forms["profile-form"];
 
 // Function to get the input fields with the current profile data
 function getProfileData() {
@@ -101,5 +101,5 @@ function updateProfileData(event) {
 document.addEventListener("DOMContentLoaded", getProfileData);
 
 // Add event listener to form submission
-formElement.addEventListener("submit", updateProfileData);
+profileForm.addEventListener("submit", updateProfileData);
 closeModalButton.addEventListener("click", toggleModal);
