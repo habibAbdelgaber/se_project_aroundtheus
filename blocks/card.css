@@ -2,6 +2,7 @@
   border-radius: 10px;
   margin: 0;
   overflow: hidden;
+  position: relative;
 }
 
 .card__image {
@@ -10,6 +11,7 @@
   height: 282px;
   margin: 0;
   object-fit: cover;
+  cursor: pointer;
 }
 
 .card__footer {
@@ -17,7 +19,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 25px 20px; /* You asked me to correct the Padding value, but it seems that there is no different of padding value in mobile screens according to the figma design */
+  padding: 25px 20px;
 }
 
 .card__title {
@@ -48,4 +50,39 @@
 
 .card__like-button:hover {
   opacity: 0.5;
+}
+
+.card__like-button.active {
+  background-image: none;
+  background-color: black;
+  -webkit-mask-image: url("../images/liked.png");
+  mask-image: url("../images/liked.png");
+  -webkit-mask-size: cover;
+  mask-size: cover;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+}
+
+.card__delete {
+  background: url("../images/Trash.svg") center no-repeat;
+  object-fit: cover;
+  background-size: cover;
+  opacity: 1;
+  width: 21px;
+  height: 18px;
+  border: 0;
+  position: absolute;
+  top: 18px;
+  right: 15px;
+  cursor: pointer;
+  transition: opacity 0.3s ease-in-out;
+  filter: grayscale(100%);
+  z-index: 10;
+  color: #ffffff;
+}
+
+.card__delete:hover {
+  opacity: 0.6;
 }

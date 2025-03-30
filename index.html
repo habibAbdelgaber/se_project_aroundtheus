@@ -36,9 +36,9 @@
               </div>
               <p class="content__description">Explorer</p>
             </div>
-            <button class="profile__add-button"></button>
+            <button class="profile__add-button" id="openModal"></button>
           </section>
-          <!-- Gallery section -->
+          <!-- Cards section -->
           <section class="cards">
             <template id="card-template">
               <li class="card">
@@ -47,41 +47,45 @@
                   <h3 class="card__title"></h3>
                   <button class="card__like-button"></button>
                 </div>
+                <button class="card__delete"></button>
               </li>
             </template>
 
-            <ul class="cards__list"></ul>
+            <ul class="cards__list" id="cardsList"></ul>
+            <div class="empty-state" id="emptyState">
+              <p>No cards yet. Add your first place!</p>
+            </div>
           </section>
           <!-- End of cards -->
-          <!-- Edit profile model -->
-          <section class="modal">
-            <div class="modal__container">
-              <button class="modal__close"></button>
-              <form class="form" id="profile-form">
-                <h2 class="form__title">Edit profile</h2>
-                <div class="form__input-group">
+          <!-- Edit profile modal -->
+          <section class="profile-modal">
+            <div class="profile-modal__container">
+              <button class="profile-modal__close"></button>
+              <form class="profile-form" id="profileForm">
+                <h2 class="profile-form__title">Edit profile</h2>
+                <div class="profile-form__input-group">
                   <input
                     type="text"
                     id="name"
                     name="name"
                     required
                     placeholder="Name"
-                    class="form__input form__input-name"
+                    class="profile-form__input profile-form__input-name"
                   />
-                  <div class="form__input-line"></div>
+                  <div class="profile-form__input-line"></div>
                 </div>
-                <div class="form__input-group">
+                <div class="profile-form__input-group">
                   <input
                     type="text"
                     id="description"
                     name="description"
                     required
                     placeholder="Description"
-                    class="form__input form__input-description"
+                    class="profile-form__input profile-form__input-description"
                   />
-                  <div class="form__input-line"></div>
+                  <div class="profile-form__input-line"></div>
                 </div>
-                <button type="submit" class="form__submit">Save</button>
+                <button type="submit" class="profile-form__submit">Save</button>
               </form>
             </div>
           </section>
@@ -102,6 +106,45 @@
       <!-- End of Footer -->
     </div>
     <!-- End of page -->
+    <div class="modal hidden" id="helpModal">
+      <div class="modal__content">
+        <div class="modal__header">
+          <h2 class="modal__title">New place</h2>
+          <button class="modal__close-button" id="closeModal"></button>
+        </div>
+        <form class="form" id="placeForm">
+          <div class="form__form-group">
+            <input
+              type="text"
+              id="title"
+              name="title"
+              placeholder="Title"
+              required
+              class="form__input"
+            />
+          </div>
+          <div class="form__form-group">
+            <input
+              type="text"
+              id="imageUrl"
+              name="imageUrl"
+              placeholder="Image URL"
+              required
+              class="form__input"
+            />
+          </div>
+          <button type="submit" class="form__create-button">Create</button>
+        </form>
+      </div>
+    </div>
+    <div class="popup" id="imagePopup">
+      <div class="popup__container">
+        <button class="popup__close" id="popupClose"></button>
+        <img src="" alt="" class="popup__image" id="popupImage">
+        <p class="popup__caption" id="popupCaption"></p>
+      </div>
+    </div>
+  </div>
     <!-- JavaScript -->
     <script src="./scripts/index.js"></script>
   </body>
