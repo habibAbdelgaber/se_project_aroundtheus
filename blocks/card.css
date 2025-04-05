@@ -52,7 +52,7 @@
   opacity: 0.5;
 }
 
-.card__like-button.active {
+.card__like-button.card__like-button_active {
   background-image: none;
   background-color: black;
   -webkit-mask-image: url("../images/liked.png");
@@ -85,4 +85,23 @@
 
 .card__delete:hover {
   opacity: 0.6;
+}
+
+.empty-state {
+  display: none;
+}
+
+.empty {
+  display: block;
+  text-align: center;
+  padding: 40px 0;
+  color: #888;
+  margin-top: 40px;
+  font-size: 18px;
+}
+
+/* Animation for card deletion */
+.card__fade-out {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
 }

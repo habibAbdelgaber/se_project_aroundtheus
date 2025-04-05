@@ -36,7 +36,7 @@
               </div>
               <p class="content__description">Explorer</p>
             </div>
-            <button class="profile__add-button" id="openModal"></button>
+            <button class="profile__add-button" id="openCardModal"></button>
           </section>
           <!-- Cards section -->
           <section class="cards">
@@ -58,34 +58,32 @@
           </section>
           <!-- End of cards -->
           <!-- Edit profile modal -->
-          <section class="profile-modal">
-            <div class="profile-modal__container">
-              <button class="profile-modal__close"></button>
-              <form class="profile-form" id="profileForm">
-                <h2 class="profile-form__title">Edit profile</h2>
-                <div class="profile-form__input-group">
+          <section class="modal">
+            <div class="modal__container modal__container-medium">
+              <button class="modal__close-button"></button>
+              <form class="form" id="profileForm">
+                <h2 class="form__title">Edit profile</h2>
+                <div class="form__group">
                   <input
                     type="text"
                     id="name"
                     name="name"
                     required
                     placeholder="Name"
-                    class="profile-form__input profile-form__input-name"
+                    class="form__input form__input-name"
                   />
-                  <div class="profile-form__input-line"></div>
                 </div>
-                <div class="profile-form__input-group">
+                <div class="form__group">
                   <input
                     type="text"
                     id="description"
                     name="description"
                     required
                     placeholder="Description"
-                    class="profile-form__input profile-form__input-description"
+                    class="form__input form__input-description"
                   />
-                  <div class="profile-form__input-line"></div>
                 </div>
-                <button type="submit" class="profile-form__submit">Save</button>
+                <button type="submit" class="form__submit form__submit-save-profile">Save</button>
               </form>
             </div>
           </section>
@@ -106,14 +104,14 @@
       <!-- End of Footer -->
     </div>
     <!-- End of page -->
-    <div class="modal hidden" id="helpModal">
-      <div class="modal__content">
+    <div class="modal">
+      <div class="modal__container modal__container-medium modal__container-padded">
         <div class="modal__header">
           <h2 class="modal__title">New place</h2>
-          <button class="modal__close-button" id="closeModal"></button>
+          <button class="modal__close-button" id="closeCardModal"></button>
         </div>
-        <form class="form" id="placeForm">
-          <div class="form__form-group">
+        <form class="form" id="cardForm">
+          <div class="form__group">
             <input
               type="text"
               id="title"
@@ -123,7 +121,7 @@
               class="form__input"
             />
           </div>
-          <div class="form__form-group">
+          <div class="form__group">
             <input
               type="text"
               id="imageUrl"
@@ -133,15 +131,17 @@
               class="form__input"
             />
           </div>
-          <button type="submit" class="form__create-button">Create</button>
+          <button type="submit" class="form__submit form__submit-save-card">Create</button>
         </form>
       </div>
     </div>
-    <div class="popup" id="imagePopup">
-      <div class="popup__container">
-        <button class="popup__close" id="popupClose"></button>
+    <div class="modal">
+      <div class="modal__container modal__container-large">
+        <button class="modal__close-button modal__close-button-popup" id="closePopupButton"></button>
+        <div class="popup">
         <img src="" alt="" class="popup__image" id="popupImage">
         <p class="popup__caption" id="popupCaption"></p>
+        </div>
       </div>
     </div>
   </div>
