@@ -29,13 +29,12 @@
 }
 
 .modal__container-medium {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   padding: 34px 36px;
   max-width: 430px;
   width: 100%;
-}
-
-.modal__container-padded {
-  padding: 20px;
 }
 
 .modal__container-large {
@@ -50,10 +49,10 @@
 
 .modal__close-button {
   background: url("../images/close-icon.svg") center no-repeat;
-  background-size: contain;
+  background-size: cover;
   border: none;
-  width: 32px;
-  height: 32px;
+  width: 40.7px;
+  height: 40.7px;
   position: absolute;
   top: -40px;
   right: -40px;
@@ -82,8 +81,9 @@
     margin: 0 22px;
   }
 
-  .modal__container--medium {
+  .modal__container-medium {
     max-width: 282px;
+    width: 100%;
   }
 
   .modal__close-button {
@@ -98,5 +98,12 @@
     height: 30px;
     top: -5px;
     right: -10px;
+  }
+
+  .modal__title {
+    font-size: 18px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    margin-bottom: 76px;
   }
 }

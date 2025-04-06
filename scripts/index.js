@@ -1,12 +1,15 @@
 // DOM Elements - Modal Related
 const modals = document.querySelectorAll(".modal");
+const profileModal = document.querySelector(".modal-profile");
+const cardModal = document.querySelector(".modal-card");
+const imageModal = document.querySelector(".modal-image");
 const profileEditButton = document.querySelector(".content__edit-button");
 const addCardButton = document.querySelector(".profile__add-button");
 const closeModalButtons = document.querySelectorAll(".modal__close-button");
 
 // Form Elements - with unified class names
-const profileForm = getProfileModal()?.querySelector(".form");
-const cardForm = getCardModal()?.querySelector(".form");
+const profileForm = profileModal?.querySelector(".form");
+const cardForm = cardModal?.querySelector(".form");
 const profileNameInput = document.querySelector(".form__input-name");
 const profileDescriptionInput = document.querySelector(
   ".form__input-description"
@@ -15,8 +18,8 @@ const profileName = document.querySelector(".content__title");
 const profileDescription = document.querySelector(".content__description");
 
 // Image Popup Elements
-const popupImage = document.querySelector(".popup__image");
-const popupCaption = document.querySelector(".popup__caption");
+const modalImage = document.querySelector(".modal__image");
+const modalCaption = document.querySelector(".modal__caption");
 
 // Cards Elements
 const cardTemplate = document.querySelector("#card-template").content;
@@ -54,38 +57,6 @@ const initialCards = [
 // Current cards data
 let cards = [...initialCards];
 
-// Helper function to identify modal types
-function getModalType(modal) {
-  if (modal.querySelector(".form__input-name")) {
-    return "profile";
-  } else if (
-    modal.querySelector("#title") &&
-    modal.querySelector("#imageUrl")
-  ) {
-    return "card";
-  } else if (modal.querySelector(".popup")) {
-    return "image";
-  }
-  return "unknown";
-}
-
-// Helper function to get modals by their content
-function getProfileModal() {
-  return Array.from(modals).find((modal) =>
-    modal.querySelector(".form__input-name")
-  );
-}
-
-function getCardModal() {
-  return Array.from(modals).find(
-    (modal) => modal.querySelector("#title") && modal.querySelector("#imageUrl")
-  );
-}
-
-function getImageModal() {
-  return Array.from(modals).find((modal) => modal.querySelector(".popup"));
-}
-
 // Universal Modal Functions
 function openModal(modal) {
   // Check if modal exists before trying to access it
@@ -108,16 +79,6 @@ function closeModal(modal) {
 
   modal.classList.remove("modal_opened");
   document.querySelector(".page").classList.remove("hidden");
-
-  // Reset image src if closing image popup
-  if (getModalType(modal) === "image") {
-    setTimeout(() => {
-      if (!modal.classList.contains("modal_opened")) {
-        const popupImageInModal = modal.querySelector(".popup__image");
-        if (popupImageInModal) popupImageInModal.src = "";
-      }
-    }, 300);
-  }
 
   if (!document.querySelector(".modal_opened")) {
     document.removeEventListener("keydown", handleEscKey);
@@ -165,10 +126,12 @@ function handleProfileFormSubmit(e) {
   profileName.textContent = nameInput.value;
   profileDescription.textContent = descriptionInput.value;
 
-  const profileModal = getProfileModal();
   if (profileModal) {
     closeModal(profileModal);
   }
+
+  // Clear inputs after submission
+  form.reset();
 }
 
 // Card Functions
@@ -287,12 +250,12 @@ function handleCardFormSubmit(e) {
 
   if (emptyCardState) emptyCardState.classList.remove("empty");
 
-  const cardModal = getCardModal();
   if (cardModal) {
     closeModal(cardModal);
   }
 
-  if (cardForm) cardForm.reset();
+  // Clear inputs after submission
+  form.reset();
 }
 
 function renderCards() {
@@ -317,19 +280,18 @@ function renderCards() {
 
 // Image Popup Function
 function openImagePopup(src, caption) {
-  if (!popupImage || !popupCaption) {
-    console.error("Image popup elements are missing");
+  if (!modalImage || !modalCaption) {
+    console.error("Image modal elements are missing");
     return;
   }
 
-  popupImage.src = src;
-  popupImage.alt = `Full size view of ${caption}`;
-  popupCaption.textContent = caption;
+  // Set src value only when opening the modal
+  modalImage.src = src;
+  modalImage.alt = `Full size view of ${caption}`;
+  modalCaption.textContent = caption;
 
-  // Get the image popup modal
-  const imageModal = getImageModal();
   if (!imageModal) {
-    console.error("Image popup modal is missing");
+    console.error("Image modal is missing");
     return;
   }
 
@@ -342,9 +304,9 @@ function openImagePopup(src, caption) {
 // Debug function to check if all necessary elements exist
 function checkElements() {
   console.log({
-    profileModal: getProfileModal(),
-    cardModal: getCardModal(),
-    imageModal: getImageModal(),
+    profileModal,
+    cardModal,
+    imageModal,
     profileEditButton,
     addCardButton,
     closeModalButtons,
@@ -354,8 +316,8 @@ function checkElements() {
     profileDescriptionInput,
     profileName,
     profileDescription,
-    popupImage,
-    popupCaption,
+    modalImage,
+    modalCaption,
     cardTemplate,
     cardsList,
     emptyCardState,
@@ -388,7 +350,6 @@ if (modals.length > 0) {
 if (profileEditButton) {
   profileEditButton.addEventListener("click", () => {
     fillProfileForm();
-    const profileModal = getProfileModal();
     if (profileModal) {
       openModal(profileModal);
     }
@@ -397,23 +358,14 @@ if (profileEditButton) {
 
 if (addCardButton) {
   addCardButton.addEventListener("click", () => {
-    if (cardForm) cardForm.reset();
-    const cardModal = getCardModal();
     if (cardModal) {
       openModal(cardModal);
     }
   });
 }
 
-// Form submissions are now handled in DOMContentLoaded
-// Removing these listeners here because they might be causing duplicate submission events
-
 // Initialize
 document.addEventListener("DOMContentLoaded", () => {
-  // Set form variables after DOM is loaded
-  const profileModal = getProfileModal();
-  const cardModal = getCardModal();
-
   if (profileModal) {
     const profileFormInModal = profileModal.querySelector(".form");
     if (profileFormInModal) {

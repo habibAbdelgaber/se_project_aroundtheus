@@ -58,7 +58,7 @@
           </section>
           <!-- End of cards -->
           <!-- Edit profile modal -->
-          <section class="modal">
+          <section class="modal modal-profile">
             <div class="modal__container modal__container-medium">
               <button class="modal__close-button"></button>
               <form class="form" id="profileForm">
@@ -83,7 +83,12 @@
                     class="form__input form__input-description"
                   />
                 </div>
-                <button type="submit" class="form__submit form__submit-save-profile">Save</button>
+                <button
+                  type="submit"
+                  class="form__submit form__submit-save-profile"
+                >
+                  Save
+                </button>
               </form>
             </div>
           </section>
@@ -104,8 +109,8 @@
       <!-- End of Footer -->
     </div>
     <!-- End of page -->
-    <div class="modal">
-      <div class="modal__container modal__container-medium modal__container-padded">
+    <div class="modal modal-card">
+      <div class="modal__container modal__container-medium">
         <div class="modal__header">
           <h2 class="modal__title">New place</h2>
           <button class="modal__close-button" id="closeCardModal"></button>
@@ -131,20 +136,24 @@
               class="form__input"
             />
           </div>
-          <button type="submit" class="form__submit form__submit-save-card">Create</button>
+          <button type="submit" class="form__submit form__submit-save-card">
+            Create
+          </button>
         </form>
       </div>
     </div>
-    <div class="modal">
+    <div class="modal modal-image">
       <div class="modal__container modal__container-large">
-        <button class="modal__close-button modal__close-button-popup" id="closePopupButton"></button>
-        <div class="popup">
-        <img src="" alt="" class="popup__image" id="popupImage">
-        <p class="popup__caption" id="popupCaption"></p>
+        <button
+          class="modal__close-button modal__close-button-popup"
+          id="closePopupButton"
+        ></button>
+        <div class="modal_image-box">
+          <img src="" alt="" class="modal__image" id="popupImage" />
+          <p class="modal__caption" id="popupCaption"></p>
         </div>
       </div>
     </div>
-  </div>
     <!-- JavaScript -->
     <script src="./scripts/index.js"></script>
   </body>
