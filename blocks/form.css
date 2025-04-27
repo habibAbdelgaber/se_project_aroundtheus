@@ -13,7 +13,6 @@
 }
 
 .form__group {
-  margin-bottom: 29px;
   border-bottom: 1px solid #000000;
 }
 
@@ -33,6 +32,57 @@
 
 .form__input:focus {
   outline: none;
+}
+
+.form__group {
+  border-bottom: 1px solid #000000;
+  transition: border-color 0.3s ease;
+}
+
+/* Error state - red border for form group */
+.form__group:has(.form__input_type_error) {
+  border-bottom: 1px solid #ff0000;
+}
+
+/* Valid state - lightblue border for form group */
+.form__group:has(.form__input:valid:not(.form__input_type_error)) {
+  border-bottom: 1px solid rgb(75, 228, 146);
+}
+
+/* Form error message */
+.form__error {
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  line-height: 15px;
+  font-weight: 400;
+  color: #ff0000;
+  visibility: hidden;
+  opacity: 0;
+  min-height: 15px;
+  display: block;
+  margin-top: 5px;
+  margin-bottom: 29px;
+  transition: opacity 0.3s;
+}
+
+/* Visible error message */
+.form__error_visible {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Disabled button state */
+.form__button_disabled {
+  background-color: #f6f6f6;
+  color: #000000;
+  opacity: 0.2;
+  border: 1px solid #000000;
+  pointer-events: none;
+}
+
+/* Proper spacing even when errors are shown */
+.form__group:last-of-type {
+  margin-bottom: 0;
 }
 
 .form__submit {

@@ -7,7 +7,7 @@ const profileEditButton = document.querySelector(".content__edit-button");
 const addCardButton = document.querySelector(".profile__add-button");
 const closeModalButtons = document.querySelectorAll(".modal__close-button");
 
-// Form Elements - with unified class names
+// Form Elements
 const profileForm = profileModal?.querySelector(".form");
 const cardForm = cardModal?.querySelector(".form");
 const profileNameInput = document.querySelector(".form__input-name");
@@ -59,11 +59,7 @@ let cards = [...initialCards];
 
 // Universal Modal Functions
 function openModal(modal) {
-  // Check if modal exists before trying to access it
-  if (!modal) {
-    console.error("Modal element is null or undefined");
-    return;
-  }
+  if (!modal) return;
 
   modal.classList.add("modal_opened");
   document.querySelector(".page").classList.add("hidden");
@@ -71,11 +67,7 @@ function openModal(modal) {
 }
 
 function closeModal(modal) {
-  // Check if modal exists before trying to access it
-  if (!modal) {
-    console.error("Modal element is null or undefined");
-    return;
-  }
+  if (!modal) return;
 
   modal.classList.remove("modal_opened");
   document.querySelector(".page").classList.remove("hidden");
@@ -101,10 +93,8 @@ function fillProfileForm() {
     !profileDescriptionInput ||
     !profileName ||
     !profileDescription
-  ) {
-    console.error("One or more profile elements is missing");
+  )
     return;
-  }
 
   profileNameInput.value = profileName.textContent;
   profileDescriptionInput.value = profileDescription.textContent;
@@ -113,15 +103,12 @@ function fillProfileForm() {
 function handleProfileFormSubmit(e) {
   e.preventDefault();
 
-  // Get inputs directly from the submitted form
   const form = e.target;
   const nameInput = form.querySelector(".form__input-name");
   const descriptionInput = form.querySelector(".form__input-description");
 
-  if (!profileName || !profileDescription || !nameInput || !descriptionInput) {
-    console.error("One or more profile elements is missing");
+  if (!profileName || !profileDescription || !nameInput || !descriptionInput)
     return;
-  }
 
   profileName.textContent = nameInput.value;
   profileDescription.textContent = descriptionInput.value;
@@ -129,17 +116,11 @@ function handleProfileFormSubmit(e) {
   if (profileModal) {
     closeModal(profileModal);
   }
-
-  // Clear inputs after submission
-  form.reset();
 }
 
 // Card Functions
 function createCardElement(data) {
-  if (!cardTemplate) {
-    console.error("Card template is missing");
-    return null;
-  }
+  if (!cardTemplate) return null;
 
   const cardElement = cardTemplate.cloneNode(true);
   const cardItem = cardElement.querySelector(".card");
@@ -148,10 +129,8 @@ function createCardElement(data) {
   const likeButton = cardElement.querySelector(".card__like-button");
   const deleteButton = cardElement.querySelector(".card__delete");
 
-  if (!cardItem || !cardImage || !cardTitle || !likeButton || !deleteButton) {
-    console.error("One or more card elements is missing");
+  if (!cardItem || !cardImage || !cardTitle || !likeButton || !deleteButton)
     return null;
-  }
 
   cardItem.setAttribute(
     "data-id",
@@ -215,20 +194,11 @@ function handleDeleteClick(e) {
 function handleCardFormSubmit(e) {
   e.preventDefault();
 
-  // Get inputs from the form that was submitted
   const form = e.target;
   const titleInput = form.querySelector("#title");
   const urlInput = form.querySelector("#imageUrl");
 
-  if (!titleInput || !urlInput) {
-    console.error("Title or URL input is missing");
-    return;
-  }
-
-  if (!titleInput.value.trim() || !urlInput.value.trim()) {
-    alert("Please fill in all fields");
-    return;
-  }
+  if (!titleInput || !urlInput) return;
 
   const newCard = {
     name: titleInput.value,
@@ -259,10 +229,7 @@ function handleCardFormSubmit(e) {
 }
 
 function renderCards() {
-  if (!cardsList) {
-    console.error("Cards list element is missing");
-    return;
-  }
+  if (!cardsList) return;
 
   cardsList.innerHTML = "";
 
@@ -280,20 +247,11 @@ function renderCards() {
 
 // Image Popup Function
 function openImagePopup(src, caption) {
-  if (!modalImage || !modalCaption) {
-    console.error("Image modal elements are missing");
-    return;
-  }
+  if (!modalImage || !modalCaption || !imageModal) return;
 
-  // Set src value only when opening the modal
   modalImage.src = src;
   modalImage.alt = `Full size view of ${caption}`;
   modalCaption.textContent = caption;
-
-  if (!imageModal) {
-    console.error("Image modal is missing");
-    return;
-  }
 
   // Small delay to ensure image loads properly
   setTimeout(() => {
@@ -301,30 +259,7 @@ function openImagePopup(src, caption) {
   }, 10);
 }
 
-// Debug function to check if all necessary elements exist
-function checkElements() {
-  console.log({
-    profileModal,
-    cardModal,
-    imageModal,
-    profileEditButton,
-    addCardButton,
-    closeModalButtons,
-    profileForm,
-    cardForm,
-    profileNameInput,
-    profileDescriptionInput,
-    profileName,
-    profileDescription,
-    modalImage,
-    modalCaption,
-    cardTemplate,
-    cardsList,
-    emptyCardState,
-  });
-}
-
-// Set up event listeners - only if elements exist
+// Set up event listeners
 // Modal close buttons
 if (closeModalButtons.length > 0) {
   closeModalButtons.forEach((button) => {
@@ -369,7 +304,6 @@ document.addEventListener("DOMContentLoaded", () => {
   if (profileModal) {
     const profileFormInModal = profileModal.querySelector(".form");
     if (profileFormInModal) {
-      // Set up event listener directly on the form element
       profileFormInModal.addEventListener("submit", handleProfileFormSubmit);
     }
   }
@@ -377,13 +311,9 @@ document.addEventListener("DOMContentLoaded", () => {
   if (cardModal) {
     const cardFormInModal = cardModal.querySelector(".form");
     if (cardFormInModal) {
-      // Set up event listener directly on the form element
       cardFormInModal.addEventListener("submit", handleCardFormSubmit);
     }
   }
-
-  // Debug to check all elements
-  checkElements();
 
   renderCards();
   fillProfileForm();

@@ -61,7 +61,7 @@
           <section class="modal modal-profile">
             <div class="modal__container modal__container-medium">
               <button class="modal__close-button"></button>
-              <form class="form" id="profileForm">
+              <form class="form" id="profileForm" novalidate>
                 <h2 class="form__title">Edit profile</h2>
                 <div class="form__group">
                   <input
@@ -71,8 +71,11 @@
                     required
                     placeholder="Name"
                     class="form__input form__input-name"
+                    minlength="2"
+                    maxlength="40"
                   />
                 </div>
+                <span class="form__error name-error"></span>
                 <div class="form__group">
                   <input
                     type="text"
@@ -81,8 +84,11 @@
                     required
                     placeholder="Description"
                     class="form__input form__input-description"
+                    minlength="2"
+                    maxlength="200"
                   />
                 </div>
+                <span class="form__error description-error"></span>
                 <button
                   type="submit"
                   class="form__submit form__submit-save-profile"
@@ -115,7 +121,7 @@
           <h2 class="modal__title">New place</h2>
           <button class="modal__close-button" id="closeCardModal"></button>
         </div>
-        <form class="form" id="cardForm">
+        <form class="form" id="cardForm" novalidate>
           <div class="form__group">
             <input
               type="text"
@@ -124,11 +130,14 @@
               placeholder="Title"
               required
               class="form__input"
+              minlength="1"
+              maxlength="30"
             />
           </div>
+          <span class="form__error title-error"></span>
           <div class="form__group">
             <input
-              type="text"
+              type="url"
               id="imageUrl"
               name="imageUrl"
               placeholder="Image URL"
@@ -136,6 +145,7 @@
               class="form__input"
             />
           </div>
+          <span class="form__error imageUrl-error"></span>
           <button type="submit" class="form__submit form__submit-save-card">
             Create
           </button>
@@ -156,5 +166,6 @@
     </div>
     <!-- JavaScript -->
     <script src="./scripts/index.js"></script>
+    <script src="./scripts/validate.js"></script>
   </body>
 </html>
