@@ -46,7 +46,7 @@
 
 /* Valid state - lightblue border for form group */
 .form__group:has(.form__input:valid:not(.form__input_type_error)) {
-  border-bottom: 1px solid rgb(75, 228, 146);
+  border-bottom: 1px solid rgb(75, 126, 228);
 }
 
 /* Form error message */
@@ -72,7 +72,7 @@
 }
 
 /* Disabled button state */
-.form__button_disabled {
+.form__submit_disabled {
   background-color: #f6f6f6;
   color: #000000;
   opacity: 0.2;

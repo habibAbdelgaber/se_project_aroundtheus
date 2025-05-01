@@ -102,13 +102,7 @@ function fillProfileForm() {
 
 function handleProfileFormSubmit(e) {
   e.preventDefault();
-
-  const form = e.target;
-  const nameInput = form.querySelector(".form__input-name");
-  const descriptionInput = form.querySelector(".form__input-description");
-
-  if (!profileName || !profileDescription || !nameInput || !descriptionInput)
-    return;
+  if (!profileName || !profileDescription) return;
 
   profileName.textContent = nameInput.value;
   profileDescription.textContent = descriptionInput.value;
@@ -230,8 +224,7 @@ function handleCardFormSubmit(e) {
 
 function renderCards() {
   if (!cardsList) return;
-
-  cardsList.innerHTML = "";
+  cardTemplate.removeChild(cardTemplate.firstChild);
 
   if (cards.length === 0) {
     if (emptyCardState) emptyCardState.classList.add("empty");
@@ -316,5 +309,11 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   renderCards();
-  fillProfileForm();
 });
+
+// Insert year in the footer dynamically
+const currentYear = new Date().getFullYear();
+const footerYear = document.querySelector(".footer__year");
+if (footerYear) {
+  footerYear.textContent = currentYear;
+}

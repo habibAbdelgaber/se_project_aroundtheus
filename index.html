@@ -42,7 +42,7 @@
           <section class="cards">
             <template id="card-template">
               <li class="card">
-                <img class="card__image" src="" alt="" />
+                <img class="card__image" src="" alt="Card image" />
                 <div class="card__footer">
                   <h3 class="card__title"></h3>
                   <button class="card__like-button"></button>
@@ -106,9 +106,7 @@
       <footer class="footer container">
         <p class="footer__copyright">
           &copy;
-          <script>
-            document.write(new Date().getFullYear());
-          </script>
+          <span class="footer__year"></span>
           Around the U.S.
         </p>
       </footer>
@@ -158,7 +156,7 @@
           class="modal__close-button modal__close-button-popup"
           id="closePopupButton"
         ></button>
-        <div class="modal_image-box">
+        <div class="modal__image-box">
           <img src="" alt="" class="modal__image" id="popupImage" />
           <p class="modal__caption" id="popupCaption"></p>
         </div>
