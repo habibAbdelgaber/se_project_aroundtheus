@@ -104,8 +104,8 @@ function handleProfileFormSubmit(e) {
   e.preventDefault();
   if (!profileName || !profileDescription) return;
 
-  profileName.textContent = nameInput.value;
-  profileDescription.textContent = descriptionInput.value;
+  profileName.textContent = profileNameInput.value.trim();
+  profileDescription.textContent = profileDescriptionInput.value.trim();
 
   if (profileModal) {
     closeModal(profileModal);
@@ -224,6 +224,7 @@ function handleCardFormSubmit(e) {
 
 function renderCards() {
   if (!cardsList) return;
+
   cardTemplate.removeChild(cardTemplate.firstChild);
 
   if (cards.length === 0) {
