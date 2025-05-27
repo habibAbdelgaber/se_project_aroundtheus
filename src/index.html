@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Around the U.S</title>
-    <link rel="stylesheet" href="./pages/index.css" />
   </head>
   <body class="page">
     <!-- Main page -->
@@ -12,7 +11,7 @@
       <!-- Header -->
       <header class="header container">
         <img
-          src="./images/around-us-logo.svg"
+          src="<%=require('./images/around-us-logo.svg') %>"
           alt="Around the U.S image"
           class="header__logo"
         />
@@ -25,7 +24,7 @@
           <!-- Profile section -->
           <section class="profile">
             <img
-              src="./images/jacques-cousteau.jpg"
+              src="<%=require('./images/jacques-cousteau.jpg') %>"
               alt="Jacques Cousteau"
               class="profile__image"
             />
@@ -58,7 +57,7 @@
           </section>
           <!-- End of cards -->
           <!-- Edit profile modal -->
-          <section class="modal modal-profile">
+          <section class="modal modal_type_profile">
             <div class="modal__container modal__container-medium">
               <button class="modal__close-button"></button>
               <form class="form" id="profileForm" novalidate>
@@ -113,7 +112,7 @@
       <!-- End of Footer -->
     </div>
     <!-- End of page -->
-    <div class="modal modal-card">
+    <div class="modal modal_type_card">
       <div class="modal__container modal__container-medium">
         <div class="modal__header">
           <h2 class="modal__title">New place</h2>
@@ -150,7 +149,7 @@
         </form>
       </div>
     </div>
-    <div class="modal modal-image">
+    <div class="modal modal_type_image">
       <div class="modal__container modal__container-large">
         <button
           class="modal__close-button modal__close-button-popup"
@@ -162,9 +161,5 @@
         </div>
       </div>
     </div>
-    <!-- JavaScript -->
-    <script type="module" src="./pages/index.js"></script>
-    <script type="module" src="./components/FormValidator.js"></script>
-    <script type="module" src="./components/Card.js"></script>
   </body>
 </html>
