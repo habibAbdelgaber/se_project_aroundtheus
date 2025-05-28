@@ -15,6 +15,16 @@ document.addEventListener("DOMContentLoaded", () => {
   const profileEditButton = document.querySelector(".content__edit-button");
   const addCardButton = document.querySelector(".profile__add-button");
   const formElements = document.querySelectorAll(".form");
+  const profileNameInput = profileForm.elements["name"];
+  const profileDescriptionInput = profileForm.elements["description"];
+
+  const formValidators = {};
+  formElements.forEach((form) => {
+    const formId = form.getAttribute("id");
+    const validator = new FormValidator(config, form);
+    validator.enableValidation();
+    formValidators[formId] = validator;
+  });
 
   // UserInfo instance
   const userInfo = new UserInfo({
@@ -57,57 +67,47 @@ document.addEventListener("DOMContentLoaded", () => {
         name: formData.name,
         description: formData.description,
       });
+      // Close the popup after updating user info
+      profileFormPopup.close();
     }
   );
   profileFormPopup.setEventListeners();
 
   // // PopupWithForm: card creation form
   const addCardFormPopup = new PopupWithForm(".modal_type_card", (formData) => {
-    const newCard = new Card({
-      data: {
-        name: formData.title,
-        link: formData.imageUrl,
-      },
-      cardSelector: "#card-template",
-      handleImageClick: (name, link) =>
-        handleImageClick(name, link, imagePopup),
+    // section.addItem(newCard.generateCard());
+    renderer({
+      name: formData.title,
+
+      link: formData.imageUrl,
     });
-    section.addItem(newCard.generateCard());
+    // Reset the form after adding the card
+    formValidators["cardForm"].resetValidation();
     // Close the popup after adding the card
+    addCardFormPopup.close();
   });
   addCardFormPopup.setEventListeners();
 
   // Open profile form along with pre-filling data
   profileEditButton.addEventListener("click", () => {
     const userData = userInfo.getUserInfo();
-    const profileNameInput = profileForm.elements["name"];
-    const profileDescriptionInput = profileForm.elements["description"];
 
     // Pre-fill the form with current user data
     profileNameInput.value = userData.name;
     profileDescriptionInput.value = userData.description;
 
+    // Reset validation state
+    formValidators["profileForm"].resetValidation();
     // Open the profile modal
     profileFormPopup.open();
   });
 
   // Open add card form
   addCardButton.addEventListener("click", () => {
-    // Reset the form fields
-    const cardForm = document.querySelector("#cardForm");
-    cardForm.reset();
-
     // Open the add card modal
     addCardFormPopup.open();
   });
 
-  const formValidators = {};
-  formElements.forEach((form) => {
-    const formId = form.getAttribute("id");
-    const validator = new FormValidator(config, form);
-    validator.enableValidation();
-    formValidators[formId] = validator;
-  });
   // Insert year in the footer dynamically
   const currentYear = new Date().getFullYear();
   const footerYear = document.querySelector(".footer__year");
