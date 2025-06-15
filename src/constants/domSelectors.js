@@ -1,4 +1,5 @@
 // DOM elements
+export const CARD_TEMPLATE_SELECTOR = "#card-template";
 export const CARD_LIST_SELECTOR = ".cards__list";
 // form objects
 export const config = {
