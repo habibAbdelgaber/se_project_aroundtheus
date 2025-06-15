@@ -1,6 +1,6 @@
 import Popup from "./Popup.js";
 
-export default class PopupWithForm extends Popup {
+export default class UserUpdateAvatarForm extends Popup {
   constructor(popupSelector, handleFormSubmit) {
     super(popupSelector);
     this._handleFormSubmit = handleFormSubmit;
@@ -27,7 +27,7 @@ export default class PopupWithForm extends Popup {
 
       // Show loading state
       const originalButtonText = this._submitButton.textContent;
-      this._submitButton.textContent = "Saving...";
+      this._submitButton.textContent = "Updating...";
       this._submitButton.disabled = true;
 
       try {

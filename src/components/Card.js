@@ -1,9 +1,19 @@
 export default class Card {
-  constructor({ data, cardSelector, handleImageClick }) {
+  constructor({
+    data,
+    cardSelector,
+    handleImageClick,
+    handleLikeToggle,
+    handleDeleteConfirm,
+  }) {
     this._name = data.name;
     this._link = data.link;
+    this._id = data._id; // Assuming 'id' is part of the data object
+    this._isLiked = data.isLiked || false; // Default to false if not provided
+    this._handleLikeToggle = handleLikeToggle; // Function to handle like toggle
     this._cardSelector = cardSelector;
     this._handleImageClick = handleImageClick;
+    this._handleDeleteConfirm = handleDeleteConfirm;
 
     // Bind handlers to ensure 'this' refers to the class instance
     this._handleLikeButton = this._handleLikeButton.bind(this);
@@ -48,12 +58,28 @@ export default class Card {
 
   // Private method: toggle the like state
   _handleLikeButton() {
-    this._likeButton.classList.toggle("card__like-button_active");
+    const toggleLike = !this._isLiked; // Toggle the like state
+    this._handleLikeToggle(this._id, toggleLike)
+      .then(() => {
+        this._isLiked = toggleLike; // Update the like state based on the response
+        this._updateLikeState(); // Update the UI
+      })
+      .catch((error) => {
+        console.error("Error toggling like state:", error);
+      });
+  }
+
+  _updateLikeState() {
+    if (this._isLiked) {
+      this._likeButton.classList.add("card__like-button_active");
+    } else {
+      this._likeButton.classList.remove("card__like-button_active");
+    }
   }
 
   // Private method: delete the card
   _handleDeleteButton() {
-    this._element.remove();
-    this._element = null;
+    // Assuming handleDeleteConfirm is a function that takes the card ID and the card element to remove it
+    this._handleDeleteConfirm(this._id, this._element);
   }
 }
