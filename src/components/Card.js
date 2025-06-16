@@ -9,7 +9,7 @@ export default class Card {
     this._name = data.name;
     this._link = data.link;
     this._id = data._id; // Assuming 'id' is part of the data object
-    this._isLiked = data.isLiked || false; // Default to false if not provided
+    this._isLiked = data.isLiked;
     this._handleLikeToggle = handleLikeToggle; // Function to handle like toggle
     this._cardSelector = cardSelector;
     this._handleImageClick = handleImageClick;
@@ -33,6 +33,7 @@ export default class Card {
     this._cardImage.alt = this._name;
     this._titleElement.textContent = this._name;
 
+    this._updateLikeState(); // Set initial like state
     this._setEventListeners();
 
     return this._element;

@@ -10,7 +10,6 @@ import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithConfirm from "../components/PopupWithConfirm.js";
 import Section from "../components/Section.js";
 import UserInfo from "../components/UserInfo.js";
-import UserUpdateAvatarForm from "../components/UserUpdateAvatarForm.js";
 
 // Utilities
 import { handleImageClick } from "../utils/utils.js";
@@ -85,7 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const deleteCardPopup = new PopupWithConfirm(".modal_type_confirm-delete");
   deleteCardPopup.setEventListeners();
 
-  const updateAvatarPopupForm = new UserUpdateAvatarForm(
+  const updateAvatarPopupForm = new PopupWithForm(
     ".modal_type_update-avatar",
     async (formData) => {
       const avatar = formData.imageUrl?.trim();
@@ -194,8 +193,6 @@ document.addEventListener("DOMContentLoaded", () => {
           name: updatedUser.name,
           description: updatedUser.about,
         });
-
-        profileFormPopup.close();
       } catch (error) {
         console.error("Failed to update profile:", error.message);
       } finally {
@@ -221,8 +218,6 @@ document.addEventListener("DOMContentLoaded", () => {
         );
 
         renderer(createdCard);
-        formValidators["cardForm"].resetValidation();
-        addCardFormPopup.close();
       } catch (error) {
         console.error("Error creating card:", error.message);
         throw error;
@@ -242,6 +237,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Open Add Card Form
   addCardButton.addEventListener("click", () => {
+    formValidators["cardForm"].resetValidation();
     addCardFormPopup.open();
   });
 });

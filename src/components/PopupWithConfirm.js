@@ -39,14 +39,19 @@ export default class PopupWithConfirm extends Popup {
 
       try {
         await this._handleOnConfirm(); // await the async deletion
+        this.close(); // Close the popup after successful deletion
       } catch (err) {
         console.error("Error during deletion:", err);
       } finally {
         // Restore original state and close
         this._confirmButton.textContent = originalText;
         this._confirmButton.disabled = false;
-        this.close();
       }
     }
+  }
+
+  // Close the popup
+  close() {
+    super.close();
   }
 }

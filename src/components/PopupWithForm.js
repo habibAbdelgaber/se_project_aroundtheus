@@ -32,7 +32,8 @@ export default class PopupWithForm extends Popup {
 
       try {
         await this._handleFormSubmit(inputValues);
-        this._form.reset();
+        // this._form.reset();
+        this.close(); // Close the popup after successful submission
       } catch (error) {
         console.error("Error during form submission:", error);
       } finally {
@@ -41,5 +42,11 @@ export default class PopupWithForm extends Popup {
         this._submitButton.disabled = false;
       }
     });
+  }
+
+  // Close the popup and reset the form
+  close() {
+    super.close();
+    this._form.reset();
   }
 }
