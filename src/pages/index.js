@@ -27,29 +27,20 @@ document.addEventListener("DOMContentLoaded", () => {
   // DOM Elements
   const profileEditButton = document.querySelector(".content__edit-button");
   const addCardButton = document.querySelector(".profile__add-button");
-  const profilePicture = document.querySelector(".profile__image");
   const updateUserAvatarButton = document.querySelector(
     ".profile__update-avatar-button"
   );
 
-  const formElements = document.querySelectorAll(".form");
   const profileNameInput = profileForm.elements["name"];
   const profileDescriptionInput = profileForm.elements["description"];
+  const imageForm = document.forms["updateAvatarForm"];
+  const imageUrlInput = imageForm.elements["imageUrl"];
   const footerYear = document.querySelector(".footer__year");
 
   // Set current year in footer
   if (footerYear) {
     footerYear.textContent = new Date().getFullYear();
   }
-
-  // Form Validation
-  const formValidators = {};
-  formElements.forEach((form) => {
-    const formId = form.getAttribute("id");
-    const validator = new FormValidator(config, form);
-    validator.enableValidation();
-    formValidators[formId] = validator;
-  });
 
   // API Client
   const apiClient = new APIClient({ baseUrl: API_BASE_URL });
@@ -58,6 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const userInfo = new UserInfo({
     nameSelector: ".content__title",
     descriptionSelector: ".content__description",
+    imageSelector: ".profile__image",
   });
 
   // Fetch User Info
@@ -69,11 +61,14 @@ document.addEventListener("DOMContentLoaded", () => {
       userInfo.setUserInfo({
         name: userData.name,
         description: userData.about,
+        image: {
+          src: userData.avatar,
+          alt: userData.name || "User Avatar",
+        },
       });
-      profilePicture.src = userData.avatar;
-      profilePicture.alt = userData.name || "User Avatar";
     } catch (error) {
       console.error(`Error fetching user data: ${error.message}`);
+      throw error;
     }
   })();
 
@@ -88,16 +83,15 @@ document.addEventListener("DOMContentLoaded", () => {
     ".modal_type_update-avatar",
     async (formData) => {
       const avatar = formData.imageUrl?.trim();
+
       try {
-        const updateUserAvatar = await apiClient.patch(
+        await apiClient.patch(
           "/users/me/avatar",
           {
             avatar,
           },
           { headers: { authorization: AUTH_TOKEN } }
         );
-        profilePicture.src = updateUserAvatar.avatar;
-        profilePicture.alt = "User Avatar";
         updateAvatarPopupForm.close();
       } catch (error) {
         console.error("Failed to update avatar:", error.message);
@@ -106,11 +100,11 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   );
   updateAvatarPopupForm.setEventListeners();
+
   // Open Update Avatar Form
   updateUserAvatarButton.addEventListener("click", () => {
-    console.log("Opening update avatar form");
-    // Reset form validation
-    formValidators["updateAvatarForm"].resetValidation();
+    imageUrlInput.placeholder = "https://example.com/avatar.jpg"; // Set placeholder for clarity
+    formValidators["updateAvatarForm"].resetValidation(); // Reset validation state
     updateAvatarPopupForm.open();
   });
 
@@ -131,6 +125,7 @@ document.addEventListener("DOMContentLoaded", () => {
             console.log("This post has been deleted");
           } catch (err) {
             console.error("Failed to delete card:", err.message);
+            throw err;
           }
         });
       },
@@ -166,6 +161,7 @@ document.addEventListener("DOMContentLoaded", () => {
       section.renderItems();
     } catch (error) {
       console.error(`Error fetching initial cards: ${error.message}`);
+      throw error;
     } finally {
       console.log("Rendering completed");
     }
@@ -177,10 +173,6 @@ document.addEventListener("DOMContentLoaded", () => {
     async (formData) => {
       const name = formData.name?.trim();
       const about = formData.description?.trim();
-
-      const originalText = profileFormPopup._submitButton.textContent;
-      profileFormPopup._submitButton.textContent = "Saving...";
-      profileFormPopup._submitButton.disabled = true;
 
       try {
         const updatedUser = await apiClient.patch(
@@ -195,9 +187,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       } catch (error) {
         console.error("Failed to update profile:", error.message);
-      } finally {
-        profileFormPopup._submitButton.textContent = originalText;
-        profileFormPopup._submitButton.disabled = false;
+        throw error;
       }
     }
   );
@@ -226,18 +216,35 @@ document.addEventListener("DOMContentLoaded", () => {
   );
   addCardFormPopup.setEventListeners();
 
+  const formValidators = {};
+
+  // PopupWithForm instances
+  const popupForms = {
+    profileForm: profileFormPopup,
+    cardForm: addCardFormPopup,
+    updateAvatarForm: updateAvatarPopupForm,
+  };
+
+  // Initialize Form Validators using getForm() method
+  Object.keys(popupForms).forEach((formName) => {
+    const formElement = popupForms[formName].getForm();
+    formValidators[formName] = new FormValidator(config, formElement);
+    formValidators[formName].enableValidation();
+  });
+
   // Open Profile Edit Form
   profileEditButton.addEventListener("click", () => {
     const userData = userInfo.getUserInfo();
     profileNameInput.value = userData.name;
     profileDescriptionInput.value = userData.description;
-    formValidators["profileForm"].resetValidation();
+    formValidators["profileForm"].resetValidation(); // Reset validation state
+
     profileFormPopup.open();
   });
 
   // Open Add Card Form
   addCardButton.addEventListener("click", () => {
-    formValidators["cardForm"].resetValidation();
+    formValidators["cardForm"].resetValidation(); // Reset validation state
     addCardFormPopup.open();
   });
 });
