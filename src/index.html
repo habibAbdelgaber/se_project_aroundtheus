@@ -23,11 +23,10 @@
         <main class="main-content">
           <!-- Profile section -->
           <section class="profile">
-            <img
-              src="<%=require('./images/jacques-cousteau.jpg') %>"
-              alt="Jacques Cousteau"
-              class="profile__image"
-            />
+            <img src="" alt="User avatar" class="profile__image" />
+            <div class="profile__update-avatar-container">
+              <button class="profile__update-avatar-button"></button>
+            </div>
             <div class="profile__content content">
               <div class="content__info">
                 <h2 class="content__title">Jacques Cousteau</h2>
@@ -112,13 +111,14 @@
       <!-- End of Footer -->
     </div>
     <!-- End of page -->
+    <!-- Card modal -->
     <div class="modal modal_type_card">
       <div class="modal__container modal__container-medium">
         <div class="modal__header">
           <h2 class="modal__title">New place</h2>
           <button class="modal__close-button" id="closeCardModal"></button>
         </div>
-        <form class="form" id="cardForm" novalidate>
+        <form method="POST" class="form" id="cardForm" novalidate>
           <div class="form__group">
             <input
               type="text"
@@ -149,6 +149,8 @@
         </form>
       </div>
     </div>
+    <!-- End of card modal -->
+    <!-- Image popup -->
     <div class="modal modal_type_image">
       <div class="modal__container modal__container-large">
         <button
@@ -161,5 +163,46 @@
         </div>
       </div>
     </div>
+    <!-- End of image popup -->
+    <!-- Confirm delete modal -->
+    <div class="modal modal_type_confirm-delete">
+      <div class="modal__container modal__container-small">
+        <button class="modal__close-button"></button>
+        <h2 class="modal__title">Are you sure?</h2>
+        <button class="modal__button_type_confirm">Yes</button>
+      </div>
+    </div>
+    <!-- End of confirm delete modal -->
+    <!-- Update avatar modal -->
+    <div class="modal modal_type_update-avatar">
+      <div class="modal__container modal__container-medium">
+        <div class="modal__header">
+          <h2 class="modal__title">Update Profile Picture</h2>
+          <button class="modal__close-button" id="closeAvatarModal"></button>
+        </div>
+        <form
+          class="form form_type_avatar"
+          name="updateAvatarForm"
+          id="updateAvatarForm"
+          novalidate
+        >
+          <div class="form__group">
+            <input
+              type="url"
+              id="imageUrl"
+              name="imageUrl"
+              placeholder="Image URL"
+              required
+              class="form__input"
+            />
+          </div>
+          <span class="form__error imageUrl-error"></span>
+          <button type="submit" class="form__submit form__submit-update-avatar">
+            Update Avatar
+          </button>
+        </form>
+      </div>
+    </div>
+    <!-- End of update avatar modal -->
   </body>
 </html>

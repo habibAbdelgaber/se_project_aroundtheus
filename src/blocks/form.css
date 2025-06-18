@@ -112,6 +112,9 @@
   padding: 15px;
 }
 
+.form__submit-update-avatar {
+  padding: 14px 0;
+}
 .form__submit:hover {
   opacity: 0.8;
 }
