@@ -3,6 +3,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
+  position: relative;
 }
 
 .profile__image {
@@ -11,6 +12,37 @@
   border-radius: 50%;
   object-fit: cover;
   margin-right: 30px;
+}
+
+.profile__update-avatar-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-color: #000000;
+  background-size: cover;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.profile__update-avatar-container:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.profile__update-avatar-button {
+  cursor: pointer;
+  background: url("../images/edit-profile.png") center center no-repeat
+    transparent;
+  background-size: 100% 100%;
+  object-fit: cover;
+  border: none;
+  width: 26px;
+  height: 26px;
+  transition: opacity 0.3s ease-in-out;
 }
 
 .profile__content {
